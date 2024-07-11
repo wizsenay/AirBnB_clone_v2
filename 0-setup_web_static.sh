@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 # script that sets up web servers for the deployment of web_static
+=======
+# Bash script that sets up web servers for the deployment of web_static
+>>>>>>> f9c02ad0c79ed4eb2f37d23e08a8fae6f9fe792e
 sudo apt-get update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
