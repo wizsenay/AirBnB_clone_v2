@@ -1,25 +1,9 @@
 #!/usr/bin/python3
 from fabric.api import put, run, local, env
-from time import strftime
-from datetime import date
 from os import path
 
+
 env.hosts = ["54.167.24.215", "54.82.159.235"]
-
-
-def do_pack():
-    """ A script that generates archive the contents of web_static folder"""
-
-    filename = strftime("%Y%m%d%H%M%S")
-    try:
-        local("mkdir -p versions")
-        local("tar -czvf versions/web_static_{}.tgz web_static/"
-              .format(filename))
-
-        return "versions/web_static_{}.tgz".format(filename)
-
-    except Exception as e:
-        return None
 
 
 def do_deploy(archive_path):
@@ -48,13 +32,3 @@ def do_deploy(archive_path):
         return True
     except Exception as e:
         return False
-
-
-def deploy():
-    """run the 2 functions"""
-
-    path = do_pack()
-    if not path:
-        return False
-
-    return do_deploy(path)
